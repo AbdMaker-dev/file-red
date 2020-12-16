@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminService } from '../../services/admin.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-competence',
@@ -11,7 +12,7 @@ export class CompetenceComponent implements OnInit {
 
   addCompetenceForm: any;
   niveaux = new Array<any>();
-  constructor(private adminSrv: AdminService) { }
+  constructor(private adminSrv: AdminService, private alert: AlertService) { }
 
   ngOnInit(): void {
     this.addCompetenceForm = new FormGroup({
@@ -46,7 +47,6 @@ export class CompetenceComponent implements OnInit {
     console.log(cmpt);
 
     this.adminSrv.addData('admin/competences', cmpt);
-
 
 
   }

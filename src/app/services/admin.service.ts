@@ -4,6 +4,7 @@ import { async, Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { idUser } from '../globals/VariablesGlobales';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AdminService {
   private avatare: any;
   public idUser = 0;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private alert: AlertService) { }
 
   // Get-Profiles
 
@@ -29,24 +30,35 @@ export class AdminService {
     console.log(libelle + ' ' + `${this.apiRoute}/admin/profiles/${id}`);
     return this.http.put(`${this.apiRoute}/admin/profiles/${id}`, { libelle }).pipe(tap(
       data => {
+      this.alert.succesOparion('Succés !!!');
       return data;
     },
-      err => { console.log(err); }
+      err => {
+        this.alert.ErrorAlert('vérifier la validité des informations');
+        return err; }
     ));
   }
 
   suppProfiles(id: number): Observable<any>{
     console.log(' ' + `${this.apiRoute}/profiles/${id}`);
     return this.http.delete(`${this.apiRoute}/admin/profiles/${id}`).pipe(tap(data => {
+      this.alert.succesOparion('suppression réussie !!!');
       return data;
-    }));
+    },
+    err => {
+      this.alert.ErrorAlert('vérifier la validité des informations');
+      return err; }));
   }
 
   addProfiles(libelle: string): Observable<any> {
     console.log(libelle + ' ' + `${this.apiRoute}/profiles`);
     return this.http.post(`${this.apiRoute}/admin/profiles`, { libelle }).pipe(tap(data => {
+      this.alert.succesOparion('Succés !!!');
       return data;
-    }));
+    },
+    err => {
+      this.alert.ErrorAlert('vérifier la validité des informations');
+      return err; }));
   }
 
   getUser(): Observable<any> {
@@ -67,8 +79,12 @@ export class AdminService {
   addData(route: string, data: any): any{
     console.log(data);
     return this.http.post(`${this.apiRoute}/${route}`, data).subscribe(
-      dat => { console.log(dat); },
-      err => { console.log(err); });
+      dat => {
+        this.alert.validAlert('Ajouter Avec succes');
+        return dat; },
+        err => {
+          this.alert.ErrorAlert('vérifier la validité des informations');
+          return err; });
   }
 
   addUser(data: any, avatare: File): any{
@@ -95,14 +111,21 @@ export class AdminService {
 
  sendPost(data: any): any{
   return this.http.post(`${this.apiRoute}/admin/users/registre`, data).subscribe(
-    data => { console.log(data); },
-    err => { console.log(err); });
+    dat => {
+      this.alert.validAlert('Ajouter Avec succes');
+      return dat; },
+      err => {
+        this.alert.ErrorAlert('vérifier la validité des informations');
+        return err; });
  }
 
  deleteUser(id: number): Observable<any>{
-   return this.http.delete(`${this.apiRoute}/admin/users/${id}`).pipe(tap(data => {
-    return data;
-  }));
+   return this.http.delete(`${this.apiRoute}/admin/users/${id}`).pipe(tap(dat => {
+    this.alert.validAlert('Ajouter Avec succes');
+    return dat; },
+    err => {
+      this.alert.ErrorAlert('vérifier la validité des informations');
+      return err; }));
 }
 
 }

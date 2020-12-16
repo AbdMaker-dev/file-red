@@ -5,6 +5,7 @@ import { Observable, Subscriber } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { AdminService } from './admin.service';
+import { AlertService } from './alert.service';
 
 const jwt = new JwtHelperService();
 
@@ -17,7 +18,7 @@ export class AuthentificateurService {
 
   private apiRoute = 'http://127.0.0.1:8000/api';
 
-  constructor(private httpClient: HttpClient, private router: Router, private adminSrv: AdminService) { }
+  constructor(private httpClient: HttpClient, private router: Router, private adminSrv: AdminService, private alert: AlertService) { }
 
   login(username: string, password: string): any {
     console.log(`${this.apiRoute}/login`);
@@ -26,9 +27,13 @@ export class AuthentificateurService {
       this.saveToken(result);
       this.routage();
       this.getCurrentUser();
+      this.alert.succesOparion('succès !!!');
       return true;
     },
-    err => { console.log(err.error); }
+    err => {
+      this.alert.ErrorAlert('vérifier la validité de vos informations');
+      console.log(err.error);
+     }
     );
   }
 
