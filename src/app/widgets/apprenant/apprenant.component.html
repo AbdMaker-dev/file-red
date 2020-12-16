@@ -1,0 +1,83 @@
+<mat-tab-group>
+  <mat-tab label="Liste Apprenants">
+    <!-- Start-Tableau Profile -->
+    <app-liste-utilisateur [dataSource]="dataSource"></app-liste-utilisateur>
+    <!-- End-Tableau Profile -->
+
+  </mat-tab>
+  <mat-tab label="Ajouter Apprenants">
+
+    <div class="container m-t-50">
+      <div class="row justify-content-center">
+        <div class="col-12 cnt">
+          <!--Form -->
+          <button class="btn btn-primary float-right m-r-50" (click)="addInput()"><i
+              class="fa fa-plus"></i></button><br><br>
+          <form (ngSubmit)="onSubmit()">
+            <div class="card border-primary rounded-0">
+              <div class="card-header p-0">
+                <div class="bg-info text-white text-center py-2">
+                </div>
+              </div>
+              <div class="card-body p-3">
+
+                <div id="container-add">
+                  <!--Input-->
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                      </div>
+                      <input type="email" class="form-control" id="nombre" [(ngModel)]="email" name="email[]"
+                        placeholder="exemple@gmail.com" required>
+                    </div>
+                  </div>
+                  <!--End Input-->
+                  <div style="display: none;">
+                    <!--Input-->
+                    <div class="form-group" id="input">
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                        </div>
+                        <input type="email" class="form-control" id="nombre" [(ngModel)]="email" name="email[]"
+                          placeholder="exemple@gmail.com" required>
+                      </div>
+                    </div>
+                    <!--End Input-->
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-info btn-block rounded-0 py-2">Valider</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <!--End Form -->
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title btn bg-danger" id="exampleModalLongTitle">Alert !!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Etes vous sur de vouloir supprimer !!!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="deleteUser();" data-dismiss="modal">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="area"></div>
+<nav class="main-menu">
+  <ul>
+    <ul>
+      <div class="avatre-user m-t-50 m-b-20">
+        <img src="{{ avatare }}" alt="avatare" srcset="">
+      </div>
+    </ul>
+    <li>
+      <a [routerLink]="['/admin/profils']">
+        <i class="fa fa-male fa-2x"></i>
+        <span class="nav-text">
+          Profiles
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a [routerLink]="['/admin/utilisateurs']">
+        <i class="fa fa-users fa-2x"></i>
+        <span class="nav-text">
+          Utilisateurs
+        </span>
+      </a>
+    </li>
+
+    <li class="has-subnav">
+      <a [routerLink]="['/admin/apprenants']">
+        <i class="fa fa-laptop fa-2x"></i>
+        <span class="nav-text">
+          Apprenants
+        </span>
+      </a>
+
+    </li>
+    <li class="has-subnav">
+      <hr>
+      <a href="#">
+        <i class="fa fa-list fa-2x"></i>
+        <span class="nav-text">
+          Referentiels
+        </span>
+      </a>
+    </li>
+
+    <li class="has-subnav">
+      <a [routerLink]="['/admin/gr-competences']">
+        <i class="fa fa-user fa-2x"></i>
+        <span class="nav-text">
+          Groupe-Competences
+        </span>
+      </a>
+
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-bar-chart-o fa-2x"></i>
+        <span class="nav-text">
+          Groupe-Tags
+        </span>
+      </a>
+    </li>
+    <li>
+      <hr>
+      <a href="#">
+        <i class="fa fa-font fa-2x"></i>
+        <span class="nav-text">
+          Quotes
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-table fa-2x"></i>
+        <span class="nav-text">
+          Tables
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="fa fa-info fa-2x"></i>
+        <span class="nav-text">
+          Documentation
+        </span>
+      </a>
+    </li>
+  </ul>
+
+  <ul class="logout">
+    <li>
+      <button (click)="logOut();">
+        <i class="fa fa-power-off fa-2x"></i>
+      </button>
+    </li>
+  </ul>
+</nav>

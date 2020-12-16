@@ -1,0 +1,67 @@
+<mat-tab-group>
+  <mat-tab label="Liste Gr-Competences">
+    <!-- Start-Tableau Profile -->
+    <mat-accordion>
+      <mat-panel-title class="m-t-50 m-l-25">
+        Libelle
+      </mat-panel-title>
+
+      <section *ngFor="let grCompe of groupComtences">
+        <mat-expansion-panel (opened)="panelOpenState = true" id="{{ grCompe.id }}" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ grCompe.libelle }}
+            </mat-panel-title>
+            <mat-panel-description>
+              Voire detail
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-list-competence [competences]="grCompe.competences"></app-list-competence>
+        </mat-expansion-panel>
+      </section>
+
+    </mat-accordion>
+    <!-- End-Tableau Profile -->
+  </mat-tab>
+
+  <mat-tab label="AjouterGr-Competences">
+    <form [formGroup]="grCompForm" (ngSubmit)="onSubmit()">
+      <div class="card border-primary rounded-0">
+        <div class="card-header p-0">
+          <div class="bg-info text-white text-center py-2">
+          </div>
+        </div>
+        <div class="card-body p-3">
+
+          <div id="container-add">
+            <!--Input-->
+            <div class="form-group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-list text-info"></i></div>
+                </div>
+                <input type="email" class="form-control" id="nombre" formControlName="libelle" placeholder="Libelle"
+                  required>
+              </div>
+            </div>
+            <!--End Input-->
+          </div>
+          <section class="example-section" *ngFor="let compet of competences">
+            <mat-checkbox class="example-margin" (click)="toggle(compet.id)">
+              {{ compet.libelle }}
+            </mat-checkbox>
+          </section>
+          <div class="text-center">
+            <button class="btn btn-info btn-block rounded-0 py-2">Valider</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-tab>
+
+  <mat-tab label="Ajouter-Competences">
+    <app-competence></app-competence>
+  </mat-tab>
+  <mat-tab label="Liste-Competences"></mat-tab>
+
+</mat-tab-group>

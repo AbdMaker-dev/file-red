@@ -1,0 +1,39 @@
+<div *ngFor="let competence of competences">
+  <div class="" style="text-align: center; padding: 10px;">
+    <h5>Competences: {{ competence.libelle }}</h5>
+  </div>
+  <section>
+    <div class="card text-white bg-primary mb-3">
+      <div class="card-header">Niveau 1</div>
+      <div class="card-body">
+        <h5 class="card-title">Critere Evaluation</h5>
+        <p class="card-text">{{ competence.niveaux[0].criEvaluation }}.</p>
+
+        <h5 class="card-title m-t-15">Groupe Action</h5>
+        <p class="card-text">{{ competence.niveaux[0].grAction }}.</p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-warning mb-3">
+      <div class="card-header">Niveau 2</div>
+      <div class="card-body">
+        <h5 class="card-title">Critere Evaluation</h5>
+        <p class="card-text">{{ competence.niveaux[1].criEvaluation }}.</p>
+
+        <h5 class="card-title m-t-15">Groupe Action</h5>
+        <p class="card-text">{{ competence.niveaux[1].criEvaluation }}.</p>
+      </div>
+    </div>
+
+    <div class="card text-white bg-info mb-3">
+      <div class="card-header">Niveau 3</div>
+      <div class="card-body">
+        <h5 class="card-title">Critere Evaluation</h5>
+        <p class="card-text m-t-5">{{ competence.niveaux[2].criEvaluation }}.</p>
+
+        <h5 class="card-title m-t-15">Groupe Action</h5>
+        <p class="card-text">{{ competence.niveaux[2].criEvaluation }}.</p>
+      </div>
+    </div>
+  </section>
+</div>

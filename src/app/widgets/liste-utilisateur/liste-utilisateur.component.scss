@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+}
+
+ng-container{
+    width: 50%;
+        td{
+            width: 100%;
+        }
+}
+.img{
+    width: 15%;
+    padding: 30px;
+    img{
+        width: 100%;
+        border-radius: 10px;
+    }
+}

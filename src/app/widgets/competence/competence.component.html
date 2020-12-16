@@ -1,0 +1,126 @@
+<div class="container m-t-50">
+  <div class="row justify-content-center">
+    <div class="col-12 cnt">
+      <!--Form -->
+      <form [formGroup]="addCompetenceForm" (ngSubmit)="onSubmit()">
+        <div class="card border-primary rounded-0">
+          <div class="card-header p-0">
+            <div class="bg-info text-white text-center py-2">
+            </div>
+          </div>
+          <div class="card-body p-3">
+
+            <!--Input-->
+            <div class="form-group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-etsy text-info"></i></div>
+                </div>
+                <input type="text" class="form-control" id="nombre" formControlName="libelle" placeholder="Libelle...">
+              </div>
+            </div>
+            <!--End Input-->
+
+            <div class="nivs">
+              <div class="niv">
+                <h5>Niveau 1</h5>
+                <hr>
+                <div>
+                  <!--Input-->
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-balance-scale text-info"></i></div>
+                      </div>
+                      <input type="text" class="form-control" id="nombre" formControlName="criEvaluation1"
+                        placeholder="Critere Evaluation...">
+                    </div>
+                  </div>
+                  <!--End Input-->
+
+                  <!--Input-->
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-rocket text-info"></i></div>
+                      </div>
+                      <input type="text" class="form-control" id="nombre" formControlName="grAction1"
+                        placeholder="Grp Action...">
+                    </div>
+                  </div>
+                  <!--End Input-->
+                </div>
+              </div>
+
+              <div class="niv">
+                <h5>Niveau 1</h5>
+                <hr>
+                <div>
+                  <!--Input-->
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-balance-scale text-info"></i></div>
+                      </div>
+                      <input type="text" class="form-control" id="nombre" formControlName="criEvaluation2"
+                        placeholder="Critere Evaluation...">
+                    </div>
+                  </div>
+                  <!--End Input-->
+
+                  <!--Input-->
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-rocket text-info"></i></div>
+                      </div>
+                      <input type="text" class="form-control" id="nombre" formControlName="grAction2"
+                        placeholder="Grp Action...">
+                    </div>
+                  </div>
+                  <!--End Input-->
+                </div>
+              </div>
+
+              <div class="niv">
+                <h5>Niveau 1</h5>
+                <hr>
+                <div>
+                  <!--Input-->
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-balance-scale text-info"></i></div>
+                      </div>
+                      <input type="text" class="form-control" id="nombre" formControlName="criEvaluation3"
+                        placeholder="Critere Evaluation...">
+                    </div>
+                  </div>
+                  <!--End Input-->
+
+                  <!--Input-->
+                  <div class="form-group">
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-rocket text-info"></i></div>
+                      </div>
+                      <input type="text" class="form-control" id="nombre" formControlName="grAction3"
+                        placeholder="Grp Action...">
+                    </div>
+                  </div>
+                  <!--End Input-->
+                </div>
+              </div>
+
+            </div>
+            <br><br>
+            <div class="text-center">
+              <button class="btn btn-info btn-block rounded-0 py-2">Valider</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!--End Form -->
+    </div>
+  </div>
+</div>

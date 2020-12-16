@@ -31,9 +31,25 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss",
+              "src/assets/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/assets/vendor/animate/animate.css",
+              "src/assets/vendor/css-hamburgers/hamburgers.min.css",
+              "src/assets/vendor/select2/select2.min.css",
+              "src/assets/css/util.css",
+              "src/assets/css/main.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/vendor/jquery/jquery-3.2.1.min.js",
+              "src/assets/vendor//bootstrap/js/popper.js",
+              "src/assets/vendor/bootstrap/js/bootstrap.min.js",
+              "src/assets/vendor/select2/select2.min.js",
+              "src/assets/vendor/tilt/tilt.jquery.min.js",
+              "src/assets/js/main2.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,6 +110,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -127,5 +144,8 @@
       }
     }
   },
-  "defaultProject": "file-red"
+  "defaultProject": "file-red",
+  "cli": {
+    "analytics": "94be3922-f6ba-49aa-a742-e1c24494d5d7"
+  }
 }

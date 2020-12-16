@@ -1,0 +1,29 @@
+
+.container {
+  background-color: chocolate;
+  width: 40%;
+  position: absolute;
+  top: 20%;
+  -ms-transform: translateY(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateY(-50%);
+  transform: translateX(80%);
+}
+mat-card-title{
+  margin: 0px;
+  text-align: center;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+button {
+  float: right;
+}

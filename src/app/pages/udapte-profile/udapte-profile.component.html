@@ -1,0 +1,109 @@
+<div class="container m-t-50">
+  <div class="row justify-content-center">
+    <div class="col-12 cnt">
+      <!--Form -->
+      <form [formGroup]="aupdateUserForm" (ngSubmit)="onSubmit()">
+        <div class="card border-primary rounded-0">
+          <div class="card-header p-0">
+            <div class="bg-info text-white text-center py-2">
+            </div>
+          </div>
+          <div class="card-body p-3">
+
+            <!--Input-->
+            <div class="form-group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
+                </div>
+                <input type="text" class="form-control" id="nombre" formControlName="username"
+                  placeholder="Username...">
+              </div>
+            </div>
+            <!--End Input-->
+
+            <!--Input-->
+            <div class="form-group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
+                </div>
+                <input type="text" class="form-control" id="nombre" formControlName="nom" placeholder="Nom...">
+              </div>
+            </div>
+            <!--End Input-->
+
+            <!--Input-->
+            <div class="form-group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
+                </div>
+                <input type="text" class="form-control" id="nombre" formControlName="prenom" placeholder="Prenom...">
+              </div>
+            </div>
+            <!--End Input-->
+
+            <!--Input-->
+            <div class="form-group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                </div>
+                <input type="email" class="form-control" id="nombre" formControlName="email"
+                  placeholder="exemple@gmail.com" required>
+              </div>
+            </div>
+            <!--End Input-->
+
+            <!--Input-->
+            <div class="form-group">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-phone text-info"></i></div>
+                </div>
+                <input type="text" class="form-control" id="nombre" formControlName="tel" placeholder="Ex: 77...."
+                  required>
+              </div>
+            </div>
+            <!--End Input-->
+
+            <mat-form-field appearance="fill">
+              <mat-label>Basic fill input</mat-label>
+              <ngx-mat-file-input (change)="uploadFiles($event.target)" placeholder="Choisir photo">
+              </ngx-mat-file-input>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field><br><br>
+
+            <!--Input-->
+            <mat-form-field appearance="fill">
+              <mat-label>Profile</mat-label>
+              <mat-select disableRipple formControlName="profile" (change)="profilChang();">
+                <span *ngFor="let pr of tabProfiles">
+                  <mat-option value="{{ pr.libelle }}">{{ pr.libelle }}</mat-option>
+                </span>
+              </mat-select>
+            </mat-form-field>
+            <!--Input-->
+
+            <!--Input-->
+            <div class="form-group" *ngIf="isFormt">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                </div>
+                <input type="text" class="form-control" id="nombre" formControlName="cni" placeholder="Cni..." required>
+              </div>
+            </div>
+            <!--End Input-->
+
+            <div class="text-center">
+              <button class="btn btn-info btn-block rounded-0 py-2">Valider</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!--End Form -->
+    </div>
+  </div>
+</div>
