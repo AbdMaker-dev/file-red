@@ -1,6 +1,11 @@
 /*[ FONT SIZE ]
 ///////////////////////////////////////////////////////////
 */
+.bnt{
+	background-color: #008B8B;
+	color: white;
+	justify-content: center;
+  }
 .fs-1 {font-size: 1px;}
 .fs-2 {font-size: 2px;}
 .fs-3 {font-size: 3px;}

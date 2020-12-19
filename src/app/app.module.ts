@@ -41,6 +41,8 @@ import { CompetenceComponent } from './widgets/competence/competence.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ListCompetenceComponent } from './widgets/list-competence/list-competence.component';
 import { MatModulesModule } from './materialModules/mat-modules/mat-modules.module';
+import { EditeCompetencesComponent } from './widgets/edite-competences/edite-competences.component';
+import { AdminRoutingModule } from './pages/admin/admin-routing.module';
 // MDB Angular Pro
 
 @NgModule({
@@ -64,11 +66,13 @@ import { MatModulesModule } from './materialModules/mat-modules/mat-modules.modu
     ApprenantComponent,
     GrCompetenceComponent,
     CompetenceComponent,
-    ListCompetenceComponent
+    ListCompetenceComponent,
+    EditeCompetencesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

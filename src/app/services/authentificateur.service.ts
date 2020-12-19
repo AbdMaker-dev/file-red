@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, map } from 'rxjs/operators';
-import { Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { AdminService } from './admin.service';
@@ -15,19 +15,31 @@ const jwt = new JwtHelperService();
 export class AuthentificateurService {
 
   private decodedToken = null;
+  isconnect = false;
+  public currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
 
   private apiRoute = 'http://127.0.0.1:8000/api';
 
-  constructor(private httpClient: HttpClient, private router: Router, private adminSrv: AdminService, private alert: AlertService) { }
+  constructor(private httpClient: HttpClient, private router: Router, private adminSrv: AdminService, private alert: AlertService) {
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('current') || '{}'));
+    this.currentUser = this.currentUserSubject.asObservable();
+   }
+
+   public get currentUserValue(): any{
+    return this.currentUserSubject.value;
+   }
+
 
   login(username: string, password: string): any {
-    console.log(`${this.apiRoute}/login`);
     return this.httpClient.post(`${this.apiRoute}/login`, { username, password }).subscribe(result => {
       localStorage.clear();
       this.saveToken(result);
       this.routage();
       this.getCurrentUser();
       this.alert.succesOparion('succès !!!');
+      this.currentUserSubject.next(true);
+      this.isconnect = true;
       return true;
     },
     err => {
@@ -39,7 +51,7 @@ export class AuthentificateurService {
 
   getCurrentUser(): void{
     this.adminSrv.getData('admin/user').subscribe(
-      data => { 
+      data => {
         // console.log(data.result.avatare);
         localStorage.setItem('avatare', data.result.avatare);
       },
@@ -52,6 +64,10 @@ export class AuthentificateurService {
     localStorage.setItem('auth_tkn', tokens);
     localStorage.setItem('user', JSON.stringify(this.decodedToken));
     return tokens;
+  }
+
+  asCurrentConnect(): boolean{
+    return localStorage.getItem('auth_tkn') != null ? true : false;
   }
 
   private routage(): void {
@@ -123,7 +139,7 @@ export class AuthentificateurService {
   // -------------------------------------------------------Les Fakers
   fakeRegister(user: any): Observable<any> {
     return this.httpClient.post('http://localhost:3000/register', user).pipe(tap(token => {
-      console.log(token)
+      console.log(token);
       return token;
     }));
   }

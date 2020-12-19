@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { NumberInput } from '@angular/cdk/coercion';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificateurService } from '../../services/authentificateur.service';
 
@@ -9,19 +10,16 @@ import { AuthentificateurService } from '../../services/authentificateur.service
   styleUrls: ['./nave.component.scss']
 })
 export class NaveComponent implements OnInit {
-
   avatare: any;
-  constructor(private authSrv: AuthentificateurService, private router: Router) { }
+  constructor(private authSrv: AuthentificateurService, private router: Router) {
+    this.avatare = localStorage.getItem('avatare');
+  }
 
   ngOnInit(): void {
-
-    this.avatare = localStorage.getItem('avatare');
-    console.log(this.avatare);
   }
 
   logOut(): void {
     this.logOut();
     this.router.navigateByUrl('');
-
   }
 }

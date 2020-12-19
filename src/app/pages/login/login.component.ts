@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { AuthentificateurService } from 'src/app/services/authentificateur.service';
 import { AdminService } from '../../services/admin.service';
+import { AlertService } from '../../services/alert.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   public isSubmited = true;
 
-  constructor(private authSrv: AuthentificateurService, private adminSrv: AdminService) { }
+  constructor(private authSrv: AuthentificateurService, private adminSrv: AdminService, private alert: AlertService) { }
 
   ngOnInit(): void {
 
@@ -30,11 +31,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void{
-
     if (this.loginForm.invalid) {
-      this.isSubmited = false;
+      this.alert.ErrorAlert('veuillez renseigner les champs correctement');
+      // this.isSubmited = false;
       return;
     }
+
     this.isSubmited = true;
     this.authSrv.login(this.loginForm.value.username, this.loginForm.value.password);
   }

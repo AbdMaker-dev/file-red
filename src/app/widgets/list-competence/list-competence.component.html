@@ -1,6 +1,11 @@
-<div *ngFor="let competence of competences">
-  <div class="" style="text-align: center; padding: 10px;">
+<div class="m-t-20" *ngFor="let competence of competences">
+  <div class="bnt" style="text-align: center; padding: 10px; display: inline-flex; width: 100%;">
     <h5>Competences: {{ competence.libelle }}</h5>
+    <a class="btn float-right bg-light m-l-10" style="color: #008B8B;"
+      [routerLink]="['/admin/eudte-competence/'+competence.id]"><em class="fa fa-pencil"></em>
+    </a>
+    <a class="btn btn-danger m-l-5 float-right m-l-10" (click)="supCmpt(competence.id);"><em
+        class="fa fa-trash"></em></a>
   </div>
   <section>
     <div class="card text-white bg-primary mb-3">

@@ -1,18 +1,18 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminService } from '../../services/admin.service';
-import { AlertService } from '../../services/alert.service';
 
 @Component({
-  selector: 'app-competence',
-  templateUrl: './competence.component.html',
-  styleUrls: ['./competence.component.scss']
+  selector: 'app-edite-competences',
+  templateUrl: './edite-competences.component.html',
+  styleUrls: ['./edite-competences.component.scss']
 })
-export class CompetenceComponent implements OnInit {
+export class EditeCompetencesComponent implements OnInit {
 
   addCompetenceForm: any;
   niveaux = new Array<any>();
-  constructor(private adminSrv: AdminService, private alert: AlertService) { }
+
+  constructor(private adminSrv: AdminService) { }
 
   ngOnInit(): void {
     this.addCompetenceForm = new FormGroup({

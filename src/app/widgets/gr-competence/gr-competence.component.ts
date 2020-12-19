@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-gr-competence',
@@ -13,16 +14,16 @@ export class GrCompetenceComponent implements OnInit {
   groupComtences: any;
   competences: any;
   chxk = Array<string>();
+  allCompetence: any;
 
   grCompForm = new FormGroup({
     libelle: new FormControl('', [Validators.required])
   });
 
-  constructor(private adminSrv: AdminService) { }
+  constructor(private adminSrv: AdminService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getGroupCompetence();
-    this.getCompetences();
   }
 
   getGroupCompetence(): void{
@@ -31,6 +32,21 @@ export class GrCompetenceComponent implements OnInit {
         console.log(data['hydra:member']);
         this.groupComtences = data['hydra:member'];
        },
+      err => {});
+  }
+
+  matSelected(event: any): void{
+
+    if (event.index === 3) {
+      this.getAllCompetences();
+    }else if (event.index === 1) {
+      this.getCompetences();
+    }
+  }
+
+  getAllCompetences(): void{
+    this.adminSrv.getData('admin/competences').subscribe(
+      data => { this.allCompetence = (data['hydra:member']); },
       err => {});
   }
 
@@ -59,5 +75,8 @@ export class GrCompetenceComponent implements OnInit {
       this.chxk.push('/api/admin/competences/' + event);
     }
   }
+
+
+
 
 }

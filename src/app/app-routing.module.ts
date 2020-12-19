@@ -10,18 +10,17 @@ import { UtilisateurComponent } from './widgets/utilisateur/utilisateur.componen
 import { UdapteProfileComponent } from './pages/udapte-profile/udapte-profile.component';
 import { ApprenantComponent } from './widgets/apprenant/apprenant.component';
 import { GrCompetenceComponent } from './widgets/gr-competence/gr-competence.component';
+import { EditeCompetencesComponent } from './widgets/edite-competences/edite-competences.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path : '', component: LoginComponent },
-  { path: 'admin', component: AdminComponent},
-  { path: 'cm', component : CmComponent},
-  { path: 'admin/profils', component: ProfileComponent},
-  { path: 'apprenants', component: app},
-  { path: 'formateur', component: FormateurComponent},
-  { path: 'admin/utilisateurs', component: UtilisateurComponent},
-  { path: 'update', component: UdapteProfileComponent},
-  { path: 'admin/apprenants', component: ApprenantComponent},
-  { path: 'admin/gr-competences', component: GrCompetenceComponent}
+  { path: 'admin', component: AdminComponent, canActivate: [ AuthGuard], children: [
+    { path: '', component: ProfileComponent }
+  ]},
+  { path: 'cm', component : CmComponent, canActivate: [ AuthGuard]},
+  { path: 'apprenants', component: app, canActivate: [ AuthGuard]},
+  { path: 'formateur', component: FormateurComponent, canActivate: [ AuthGuard]},
 ];
 
 @NgModule({

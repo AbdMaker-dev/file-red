@@ -23,7 +23,6 @@ export class UtilisateurComponent implements OnInit {
   constructor(private adminSrv: AdminService) { }
 
   ngOnInit(): void {
-    this.gitProfile();
     this.getUser();
     this.addUserForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
@@ -35,8 +34,6 @@ export class UtilisateurComponent implements OnInit {
       cni: new FormControl('', [])
     });
   }
-
-
 
   gitProfile(): void {
     this.adminSrv.getProfiles().subscribe(data => {
@@ -69,7 +66,6 @@ export class UtilisateurComponent implements OnInit {
   deleteUser(): void{
     // console.log(this.adminSrv.idUser + 'utili');
     this.adminSrv.deleteUser(this.adminSrv.idUser).subscribe( data => { this.getUser(); }, err => {});
-    
   }
 
   getUser(): void{
@@ -84,4 +80,11 @@ export class UtilisateurComponent implements OnInit {
       },
       err => {});
   }
+
+  matSelected(event: any): void{
+    if (event.index === 1) {
+      this.gitProfile();
+    }
+  }
+  
 }

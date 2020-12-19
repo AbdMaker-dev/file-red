@@ -5,6 +5,8 @@ import { tap, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { idUser } from '../globals/VariablesGlobales';
 import { AlertService } from './alert.service';
+import Swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +49,15 @@ export class AdminService {
     },
     err => {
       this.alert.ErrorAlert('vérifier la validité des informations');
+      return err; }));
+  }
+
+  suppData(id: number, route: string): Observable<any>{
+    console.log(' ' + `${this.apiRoute}/${route}/${id}`);
+    return this.http.delete(`${this.apiRoute}/${route}/${id}`).pipe(tap(data => {
+      return data;
+    },
+    err => {
       return err; }));
   }
 
@@ -100,6 +111,7 @@ export class AdminService {
     const me = this;
     const reader = new FileReader();
     reader.readAsDataURL(file);
+    
     reader.onload = function () {
       data.avatare = reader.result;
       return me.sendPost(data);
@@ -127,5 +139,28 @@ export class AdminService {
       this.alert.ErrorAlert('vérifier la validité des informations');
       return err; }));
 }
+
+suppDataAdvice(id: number, route: string): any{
+  Swal.fire({
+     title: 'Êtes-vous sûr?',
+     text: "Vous ne pourrez pas revenir en arrière!",
+     icon: 'warning',
+     showCancelButton: true,
+     confirmButtonColor: '#3085d6',
+     cancelButtonColor: '#d33',
+     confirmButtonText: 'Oui, supprimez-le!'
+   }).then((result) => {
+     if (result.isConfirmed) {
+
+      this.suppData(id, route).subscribe(rest => {
+        Swal.fire(
+         'Deleted!',
+         'Your file has been deleted.',
+         'success'
+       ); }, err => {});
+     }
+   });
+
+ }
 
 }
